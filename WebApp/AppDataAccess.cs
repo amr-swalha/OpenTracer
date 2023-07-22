@@ -1,26 +1,26 @@
-using LinqToDB;
-using LinqToDB.Data;
-using LinqToDB.Mapping;
+using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
 namespace WebApp;
 
-public class AppDataAccess : DataConnection
+public class AppDataAccess : DbContext
 {
-    private static MappingSchema mappingSchema;
-    public AppDataAccess(DataOptions<AppDataAccess> options)
-        : base(options.Options)
+    public AppDataAccess(DbContextOptions<AppDataAccess> options) : base(options)
     {
-        if (mappingSchema == null)
-            mappingSchema = InitContextMappings(this.MappingSchema);
     }
-    private static MappingSchema InitContextMappings(MappingSchema ms)
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        FluentMappingBuilder mappingBuilder = new FluentMappingBuilder();
-        mappingBuilder.Entity<Traces>().HasTableName("Traces")
-            .HasPrimaryKey(y => y.Id);
-        ms = mappingBuilder.Build().MappingSchema;
-            
-        return ms;
+
+    }
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+        builder.Entity<Traces>().ToTable("traces", "main").HasKey(e => e.Id);
+        builder.Entity<Traces>().Property(y => y.Id).HasColumnName(nameof(Traces.Id).ToLower());
+        builder.Entity<Traces>().Property(y => y.CreationDate).HasColumnName(nameof(Traces.CreationDate).ToLower());
+        builder.Entity<Traces>().Property(y => y.Details).HasColumnName(nameof(Traces.Details).ToLower());
+        builder.Entity<Traces>().Property(y => y.Details).HasColumnType("jsonb");
+        builder.Entity<Traces>().Property(y => y.Id).HasDefaultValueSql("newsequentialid()");
     }
 }

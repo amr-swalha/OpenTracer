@@ -4,7 +4,39 @@
     ViewData["Title"] = "OpenTracer - An open source tracing tool to help you understand how is your app is working";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="col-md-3">
+        <h2>Total Events</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-12 text-center">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Date & Time</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Traces)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.CreationDate
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
