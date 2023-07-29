@@ -1,6 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{5F360BDB-2219-44BB-A472-8449D22C8464}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{5F360BDB-2219-44BB-A472-8449D22C8464}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{C46C7FE8-48AC-40D6-9521-74F1955F0114}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTracer.Core", "OpenTracer.Core\OpenTracer.Core.csproj", "{A8476BAC-3C36-45E7-82B4-02E304DA8901}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTracer.Infra", "OpenTracer.Infra\OpenTracer.Infra.csproj", "{2A353316-F703-48B1-8187-AD7B473CA6E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTracer.Business", "OpenTracer.Business\OpenTracer.Business.csproj", "{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +23,27 @@ Global
 		{5F360BDB-2219-44BB-A472-8449D22C8464}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F360BDB-2219-44BB-A472-8449D22C8464}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F360BDB-2219-44BB-A472-8449D22C8464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46C7FE8-48AC-40D6-9521-74F1955F0114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46C7FE8-48AC-40D6-9521-74F1955F0114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46C7FE8-48AC-40D6-9521-74F1955F0114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46C7FE8-48AC-40D6-9521-74F1955F0114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8476BAC-3C36-45E7-82B4-02E304DA8901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8476BAC-3C36-45E7-82B4-02E304DA8901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8476BAC-3C36-45E7-82B4-02E304DA8901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8476BAC-3C36-45E7-82B4-02E304DA8901}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A353316-F703-48B1-8187-AD7B473CA6E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A353316-F703-48B1-8187-AD7B473CA6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A353316-F703-48B1-8187-AD7B473CA6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A353316-F703-48B1-8187-AD7B473CA6E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {660A1A98-8DF5-4EB7-9241-1CDDEA0BE0A2}
 	EndGlobalSection
 EndGlobal
