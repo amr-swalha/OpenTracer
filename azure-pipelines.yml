@@ -31,7 +31,7 @@ steps:
     zipAfterPublish: true
     command: publish
     publishWebProjects: false
-    projects: '**/AdvancedSoftwareSolutions.AdvancedShop.WebAPI.csproj'
+    projects: '**/WebAPI.csproj'
     arguments: '-c $(buildConfiguration) /p:EnvironmentName=$(AppEnvironment) --output $(build.artifactstagingdirectory) --no-restore'
 
 - task: IISWebAppManagementOnMachineGroup@0
@@ -43,7 +43,7 @@ steps:
   inputs:
     WebSiteName: $(Website)
     VirtualApplication: $(IISApp)
-    Package: '$(Build.ArtifactStagingDirectory)\**\AdvancedSoftwareSolutions.AdvancedShop.WebAPI.zip'
+    Package: '$(Build.ArtifactStagingDirectory)\**\WebAPI.zip'
 - task: IISWebAppManagementOnMachineGroup@0
   inputs:
     IISDeploymentType: 'IISApplicationPool'
