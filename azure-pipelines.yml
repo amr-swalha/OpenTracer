@@ -1,0 +1,51 @@
+trigger: none
+
+pool:
+  name: 'Default'
+  demands: 
+  - agent.name -equals $(AgentName)
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+workspace:
+      clean: all
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 7.x
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Backend'
+  inputs:
+    zipAfterPublish: true
+    command: publish
+    publishWebProjects: false
+    projects: '**/AdvancedSoftwareSolutions.AdvancedShop.WebAPI.csproj'
+    arguments: '-c $(buildConfiguration) /p:EnvironmentName=$(AppEnvironment) --output $(build.artifactstagingdirectory) --no-restore'
+
+- task: IISWebAppManagementOnMachineGroup@0
+  inputs:
+    IISDeploymentType: 'IISApplicationPool'
+    ActionIISApplicationPool: 'StopAppPool'
+    StartStopRecycleAppPoolName: '$(IISAppPool)'
+- task: IISWebAppDeploymentOnMachineGroup@0
+  inputs:
+    WebSiteName: $(Website)
+    VirtualApplication: $(IISApp)
+    Package: '$(Build.ArtifactStagingDirectory)\**\AdvancedSoftwareSolutions.AdvancedShop.WebAPI.zip'
+- task: IISWebAppManagementOnMachineGroup@0
+  inputs:
+    IISDeploymentType: 'IISApplicationPool'
+    ActionIISApplicationPool: 'StartAppPool'
+    StartStopRecycleAppPoolName: '$(IISAppPool)'
