@@ -30,9 +30,21 @@ namespace OpenTracer.Infra
         public void Delete(Guid id)
         {
             Guard.Against.NullOrEmpty(id);
-            var item = Get(y => y.Id == id);
-            _dataContext.Remove(item);
-            SaveChanges();
+            using (var txn = _dataContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    var item = Get(y => y.Id == id);
+                    _dataContext.Remove(item);
+                    SaveChanges();
+                    txn.Commit();
+                }
+                catch (Exception)
+                {
+                    txn.Rollback();
+                }
+            }
+            
         }
 
         public void Delete(List<T> entities)
