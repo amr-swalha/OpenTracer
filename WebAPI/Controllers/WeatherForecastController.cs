@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using OpenTracer.Core.Abstraction;
+using OpenTracer.Core.Entities;
+using System.Text.Json;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : BaseController<Traces>
     {
         private static readonly string[] Summaries = new[]
         {
@@ -12,22 +15,25 @@ namespace WebAPI.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly ITraceService _repository;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ITraceService repository)
+            :base(repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+
+        [HttpGet("[action]")]
+        public IActionResult Sample()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            _repository.Delete(new Guid("75dd8b8f-63ff-4eac-867f-f6f86db3d013"));
+            /*_repository.Update(new Traces { 
+                Id = new Guid("75dd8b8f-63ff-4eac-867f-f6f86db3d013"),
+                CreationDate = DateTime.UtcNow, Details = JsonSerializer.Serialize(new {Sample="data22"})
+            });*/
+            var data = _repository.Query().Where(y => y.CreationDate < DateTime.UtcNow).ToList();
+            return Ok(data);
         }
     }
 }
