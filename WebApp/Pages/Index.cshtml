@@ -1,4 +1,6 @@
 ﻿@page
+@using System.Text.Json;
+@using WebApp.Models;
 @model IndexModel
 @{
     ViewData["Title"] = "OpenTracer - An open source tracing tool to help you understand how is your app is working";
@@ -33,6 +35,19 @@
                         </td>
                         <td>
                             @item.CreationDate
+                        </td>
+                        <td>
+                            @{
+                                var data = JsonSerializer.Deserialize<TraceEvent>(item.Details);
+                                if (data != null)
+                                {
+                                     
+                                            @data.TraceName 
+                                            @data.CpuUsage
+                                        
+                                    
+                                }
+                            }
                         </td>
                     </tr>
                 }

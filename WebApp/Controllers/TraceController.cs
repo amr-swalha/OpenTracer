@@ -16,7 +16,7 @@ public class TraceController : ControllerBase
         _appDataAccess = appDataAccess;
         this.traceService = traceService;
     }
-    [HttpPost]
+    [HttpPost("[action]")]
     public async Task<List<Traces>> Post(List<Traces> traces)
     {
         await traceService.Add(new TraceEvent

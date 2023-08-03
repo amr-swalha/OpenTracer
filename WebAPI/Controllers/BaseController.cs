@@ -26,6 +26,12 @@ namespace WebAPI.Controllers
             var result = await _service.InsertAsync(entity);
             return Ok(result);
         }
+        [HttpPost("[action]")]
+        public virtual async Task<IActionResult> InsertList(List<T> entity)
+        {
+            await _service.InsertAsync(entity);
+            return Ok();
+        }
         [HttpPut]
         public virtual IActionResult Put(T entity)
         {
