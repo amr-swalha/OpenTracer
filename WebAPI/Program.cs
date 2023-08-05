@@ -18,7 +18,7 @@ namespace WebAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddRazorPages();
             // Add services to the container.
             builder.Services.AddDbContext<AppDbContext>((options) =>
             {
@@ -53,12 +53,14 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseStaticFiles();
 
+            app.UseRouting();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
-
+            app.MapRazorPages();
             app.MapControllers();
 
             app.Run();

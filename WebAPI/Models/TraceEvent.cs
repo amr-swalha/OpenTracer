@@ -1,4 +1,4 @@
-﻿namespace WebApp.Models
+﻿namespace WebAPI.Models
 {
     public class TraceEvent
     {

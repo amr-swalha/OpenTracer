@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using WebApp.Models;
+using OpenTracer.Core.Entities;
+using OpenTracer.Infra;
 
-namespace WebApp.Pages;
+namespace WebAPI.Pages;
 
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-    private readonly AppDataAccess _appDataAccess;
+    private readonly AppDbContext _appDataAccess;
     public List<Traces> Traces { get; set; } = new();
     public int TotalPages { get; set; } = 1;
     public int CurrentPage { get; set; } = 1;
@@ -17,7 +18,7 @@ public class IndexModel : PageModel
     public int? Page { get; set; }
     [BindProperty]
     public string? Id { get; set; }
-    public IndexModel(ILogger<IndexModel> logger, AppDataAccess appDataAccess)
+    public IndexModel(ILogger<IndexModel> logger, AppDbContext appDataAccess)
     {
         _logger = logger;
         _appDataAccess = appDataAccess;

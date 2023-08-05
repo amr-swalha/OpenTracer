@@ -1,0 +1,85 @@
+﻿@page "/TraceDetails"
+@using System.Text.Json;
+@model WebApp.Pages.TraceDetailsModel
+@{
+
+}
+
+<h1>Trace Details - @Model.Id</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <canvas id="cpuUsage"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas id="memoryUsage"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas id="statusChart"></canvas>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        const ctx = document.getElementById('cpuUsage');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: @Html.Raw(Json.Serialize(Model.TraceMap.Details.Select(y => y.TraceName).ToList())),
+                datasets: [{
+                    label: 'CPU Usage',
+                    data: @Html.Raw(Json.Serialize(Model.TraceMap.Details.Select(y => y.CpuUsage).ToList())),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        const memoryUsage = document.getElementById('memoryUsage');
+
+        new Chart(memoryUsage, {
+            type: 'line',
+            data: {
+                labels: @Html.Raw(Json.Serialize(Model.TraceMap.Details.Select(y => y.TraceName).ToList())),
+                datasets: [{
+                    label: 'Memory Usage',
+                    data: @Html.Raw(Json.Serialize(Model.TraceMap.Details.Select(y => y.MemoryUsage).ToList())),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        const statusChart = document.getElementById('statusChart');
+
+        new Chart(statusChart, {
+            type: 'bar',
+            data: {
+                labels: ["Success", "Error"],
+                datasets: [{
+                    label: 'Status',
+                    data: @Html.Raw(Json.Serialize(new int[2] { Model.TraceMap.Details.Count(y => y.Status == (int)TraceStatus.Success), Model.TraceMap.Details.Count(y => y.Status == (int)TraceStatus.Failed)})),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
