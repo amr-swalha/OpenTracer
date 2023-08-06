@@ -10,8 +10,8 @@ namespace OpenTracer
     {
         public string TraceName { get; set; }
         public string? TraceDescription { get; set; }
-        protected float CpuUsage { get; set; } = 0;
-        protected float MemoryUsage { get; set; } = 0;
+        public float CpuUsage { get; set; } = 0;
+        public float MemoryUsage { get; set; } = 0;
         public TraceStatus Status { get; set; } = TraceStatus.Success;
         public string? ErrorMessage { get; set; }
         public string? StackTrace { get; set; }
