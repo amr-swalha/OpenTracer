@@ -18,6 +18,61 @@
     <div class="col-md-4">
         <canvas id="statusChart"></canvas>
     </div>
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Date & Time</td>
+                    <td>Trace Name</td>
+                    <td>Trace Description</td>
+                    <td>Status</td>
+                    <td>CPU Usage (%)</td>
+                    <td>Memory Usage (MB)</td>
+                    <td>Error Message</td>
+                    <td>Stack Trace</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.TraceMap.Details.Skip((Model.Page.Value - 1) * Model.PageSize).Take(Model.PageSize))
+                {
+                    <tr>
+                        <td>
+                            @item.EventDateTime
+                        </td>
+                        <td>
+                            @item.TraceName
+                        </td>
+                        <td>
+                            @item.TraceDescription
+                        </td>
+                        <td>
+                            @((TraceStatus)item.Status)
+                        </td>
+                        <td>
+                            @item.CpuUsage
+                        </td>
+                        <td>
+                            @item.MemoryUsage
+                        </td>
+                        <td>
+                            @item.ErrorMessage
+                        </td>
+                        <td>
+                            @item.StackTrace
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @for (int i = 1; i < Model.TotalPages + 1; i++)
+                {
+                    <li class="page-item @String.Format("{0}", Model.Page  == i ? "active disabled" : "")"><a class="page-link" href="TraceDetails?id=@Model.Id&page=@i">@i</a></li>
+                }
+            </ul>
+        </nav>
+    </div>
 </div>
 
 @section Scripts{

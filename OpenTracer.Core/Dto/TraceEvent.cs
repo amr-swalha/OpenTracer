@@ -9,6 +9,6 @@
         public int Status { get; set; }
         public string? ErrorMessage { get; set; }
         public string? StackTrace { get; set; }
-        public object? Extra { get; set; }
+        public DateTime EventDateTime { get; set; } = DateTime.UtcNow;
     }
 }

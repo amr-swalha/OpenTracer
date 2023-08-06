@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using OpenTracer.Core.Dto;
 using OpenTracer.Core.Entities;
 using OpenTracer.Infra;
 using System.Text.Json;
@@ -14,6 +15,10 @@ namespace WebAPI.Pages
         public Traces Trace { get; set; }
         public TraceMap TraceMap { get; set; } = new();
         private readonly AppDbContext _appDataAccess;
+        public int TotalPages { get; set; } = 1;
+        [FromQuery]
+        public int? Page { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
         public TraceDetailsModel(AppDbContext appDataAccess)
         {
             _appDataAccess = appDataAccess;
@@ -25,6 +30,7 @@ namespace WebAPI.Pages
             TraceMap.Id = Trace.Id;
             TraceMap.CreationDate = Trace.CreationDate;
             TraceMap.Details = JsonSerializer.Deserialize<List<TraceEvent>>(Trace.Details);
+            TotalPages = (int)Math.Round((float)TraceMap.Details.Count / (float) PageSize);
         }
     }
 }

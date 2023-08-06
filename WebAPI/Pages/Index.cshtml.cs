@@ -18,6 +18,7 @@ public class IndexModel : PageModel
     public int? Page { get; set; }
     [BindProperty]
     public string? Id { get; set; }
+    public int TotalEvents { get; set; } = 0;
     public IndexModel(ILogger<IndexModel> logger, AppDbContext appDataAccess)
     {
         _logger = logger;
@@ -26,6 +27,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
+        TotalEvents = _appDataAccess.Set<Traces>().Count();
         TotalPages = (int)Math.Round(((float)_appDataAccess.Set<Traces>().Count() / (float)PageSize));
         if (Page == null)
         {

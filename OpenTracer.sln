@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{5F360BDB-2219-44BB-A472-8449D22C8464}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{C46C7FE8-48AC-40D6-9521-74F1955F0114}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTracer.Core", "OpenTracer.Core\OpenTracer.Core.csproj", "{A8476BAC-3C36-45E7-82B4-02E304DA8901}"
@@ -13,16 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTracer.Infra", "OpenTra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTracer.Business", "OpenTracer.Business\OpenTracer.Business.csproj", "{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTracer", "OpenTracer\OpenTracer.csproj", "{C7C67D1C-BCEC-4948-BBB3-9D75052A6884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5F360BDB-2219-44BB-A472-8449D22C8464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F360BDB-2219-44BB-A472-8449D22C8464}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F360BDB-2219-44BB-A472-8449D22C8464}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F360BDB-2219-44BB-A472-8449D22C8464}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C46C7FE8-48AC-40D6-9521-74F1955F0114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C46C7FE8-48AC-40D6-9521-74F1955F0114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C46C7FE8-48AC-40D6-9521-74F1955F0114}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2971E1AB-4EFC-4B92-A4F6-EC94D0465BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C67D1C-BCEC-4948-BBB3-9D75052A6884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C67D1C-BCEC-4948-BBB3-9D75052A6884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C67D1C-BCEC-4948-BBB3-9D75052A6884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C67D1C-BCEC-4948-BBB3-9D75052A6884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

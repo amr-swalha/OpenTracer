@@ -8,15 +8,15 @@
 
 <div class="row">
     <div class="col-md-3">
-        <h2>Total Events</h2>
-        <hr />
+        <h2>Total Events : @Model.TotalEvents</h2>
+        
         <div class="row">
             <div class="col-md-12 text-center">
-
             </div>
         </div>
     </div>
 </div>
+<hr />
 <div class="row">
     <div class="col-md-12">
         <table class="table table-striped">
@@ -51,34 +51,15 @@
                 }
             </tbody>
         </table>
-        
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    @for (int i = 1; i < Model.TotalPages + 1; i++)
-                    {
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                @for (int i = 1; i < Model.TotalPages + 1; i++)
+                {
                     <li class="page-item @String.Format("{0}", Model.Page  == i ? "active disabled" : "")"><a class="page-link" href="index?page=@i">@i</a></li>
                 }
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-    </div>
-</div>
-
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
     </div>
 </div>
