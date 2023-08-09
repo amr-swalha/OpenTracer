@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.1.1" />
     <PackageReference Include="linq2db" Version="5.2.2" />
     <PackageReference Include="linq2db.EntityFrameworkCore" Version="7.5.0" />
     <PackageReference Include="linq2db.PostgreSQL" Version="5.2.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
   </ItemGroup>
 
