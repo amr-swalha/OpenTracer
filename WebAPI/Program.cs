@@ -10,6 +10,7 @@ using OpenTracer.Business;
 using OpenTracer.Core.Abstraction;
 using OpenTracer.Core.Entities;
 using OpenTracer.Infra;
+using WebAPI.Middlewares;
 
 namespace WebAPI
 {
@@ -46,7 +47,7 @@ namespace WebAPI
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
+            app.UseMiddleware<SecurityHeadersMiddleware>();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
