@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OpenTracer.Core.Entities;
+using OpenTracerPackage.Core.Entities;
 
-namespace OpenTracer.Infra
+namespace OpenTracerPackage.Infra
 {
     public class AppDbContext : DbContext
     {

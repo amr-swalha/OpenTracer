@@ -1,4 +1,4 @@
-﻿namespace OpenTracer.Core.Dto
+﻿namespace OpenTracerPackage.Core.Dto
 {
     public class TraceMap
     {

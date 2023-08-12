@@ -1,7 +1,7 @@
-﻿using OpenTracer.Core.Abstraction;
-using OpenTracer.Core.Entities;
+﻿using OpenTracerPackage.Core.Abstraction;
+using OpenTracerPackage.Core.Entities;
 
-namespace OpenTracer.Business
+namespace OpenTracerPackage.Business
 {
     public class TraceService : RootService<Traces>, ITraceService
     {

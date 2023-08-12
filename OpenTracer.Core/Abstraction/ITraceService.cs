@@ -1,6 +1,6 @@
-﻿using OpenTracer.Core.Entities;
+﻿using OpenTracerPackage.Core.Entities;
 
-namespace OpenTracer.Core.Abstraction
+namespace OpenTracerPackage.Core.Abstraction
 {
     public interface ITraceService : IRootService<Traces>
     {

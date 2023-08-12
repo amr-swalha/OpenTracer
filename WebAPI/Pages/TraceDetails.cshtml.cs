@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using OpenTracer.Core.Dto;
-using OpenTracer.Core.Entities;
-using OpenTracer.Infra;
+using OpenTracerPackage.Core.Dto;
+using OpenTracerPackage.Core.Entities;
+using OpenTracerPackage.Infra;
 using System.Text.Json;
 using WebAPI.Models;
 

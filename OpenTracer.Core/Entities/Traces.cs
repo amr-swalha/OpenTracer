@@ -1,6 +1,6 @@
-﻿using OpenTracer.Core.Abstraction;
+﻿using OpenTracerPackage.Core.Abstraction;
 
-namespace OpenTracer.Core.Entities
+namespace OpenTracerPackage.Core.Entities
 {
     public class Traces : EntityRoot
     {

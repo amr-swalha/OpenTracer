@@ -1,4 +1,4 @@
-﻿namespace OpenTracer.Core.Abstraction
+﻿namespace OpenTracerPackage.Core.Abstraction
 {
     public class EntityRoot : IEntityRoot
     {

@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
-using OpenTracer.Business;
-using OpenTracer.Core.Abstraction;
-using OpenTracer.Core.Entities;
-using OpenTracer.Infra;
+using OpenTracerPackage.Business;
+using OpenTracerPackage.Core.Abstraction;
+using OpenTracerPackage.Core.Entities;
+using OpenTracerPackage.Infra;
 using WebAPI.Middlewares;
 
 namespace WebAPI

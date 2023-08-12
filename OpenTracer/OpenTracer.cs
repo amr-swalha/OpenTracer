@@ -1,14 +1,9 @@
 ﻿using Flurl.Http;
-using System;
-using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace OpenTracer
+namespace OpenTracerPackage
 {
     public class OpenTracer : IOpenTracer
     {
@@ -16,21 +11,33 @@ namespace OpenTracer
         public void AddEvent(TraceEvent traceEvent)
         {
             Process p = System.Diagnostics.Process.GetCurrentProcess();
-            if (Environment.OSVersion.Platform== PlatformID.Win32NT )
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
-                var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-                var ramCounter = new PerformanceCounter("Memory", "Available MBytes");
-                traceEvent.CpuUsage = cpuCounter.NextValue();
-                traceEvent.MemoryUsage = ramCounter.NextValue();
+                var startTime = DateTime.UtcNow;
+                var startCpuUsage = Process.GetCurrentProcess().TotalProcessorTime;
+                System.Threading.Thread.Sleep(500);
+                var endTime = DateTime.UtcNow;
+                var endCpuUsage = Process.GetCurrentProcess().TotalProcessorTime;
+                var cpuUsedMs = (endCpuUsage - startCpuUsage).TotalMilliseconds;
+                var totalMsPassed = (endTime - startTime).TotalMilliseconds;
+                var cpuUsageTotal = cpuUsedMs / (Environment.ProcessorCount * totalMsPassed);
+                traceEvent.CpuUsage = (float)(cpuUsageTotal * 100);
+                traceEvent.MemoryUsage = Environment.Is64BitProcess ? p.WorkingSet : p.WorkingSet64;
+                traceEvent.MemoryUsage = traceEvent.MemoryUsage / (1024 * 1024);
             }
-           Details.Add(traceEvent);
+            Details.Add(traceEvent);
         }
-        public async void WriteEvents()
+        public async Task WriteEvents()
         {
+            Console.WriteLine("Events written");
+            var builder = new ConfigurationBuilder();
+            builder.SetBasePath(Directory.GetCurrentDirectory())
+                   .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            IConfiguration config = builder.Build();
             if (Details.Count > 0)
             {
-                var response = await "Address".PostJsonAsync(new Traces { Details = JsonSerializer.Serialize(Details) });
-               
+                var response = await config["OpenTracer:API"].PostJsonAsync(new Traces { Details = JsonSerializer.Serialize(Details) });
+
             }
         }
     }

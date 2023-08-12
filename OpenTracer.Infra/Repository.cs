@@ -4,10 +4,10 @@ using LinqToDB.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Query;
-using OpenTracer.Core.Abstraction;
+using OpenTracerPackage.Core.Abstraction;
 using System.Linq.Expressions;
 
-namespace OpenTracer.Infra
+namespace OpenTracerPackage.Infra
 {
     public class Repository<T> : IRepository<T> where T : class, IEntityRoot
     {

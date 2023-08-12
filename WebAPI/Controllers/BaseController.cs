@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
-using OpenTracer.Core.Abstraction;
+using OpenTracerPackage.Core.Abstraction;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI.Controllers

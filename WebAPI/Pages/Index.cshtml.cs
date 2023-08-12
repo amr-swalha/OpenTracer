@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using OpenTracer.Core.Entities;
-using OpenTracer.Infra;
+using OpenTracerPackage.Core.Entities;
+using OpenTracerPackage.Infra;
 
 namespace WebAPI.Pages;
 

@@ -1,4 +1,4 @@
-﻿namespace OpenTracer.Core
+﻿namespace OpenTracerPackage.Core
 {
     public enum TraceStatus
     {

@@ -4,10 +4,13 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))Package</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="3.2.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0" />
   </ItemGroup>
 

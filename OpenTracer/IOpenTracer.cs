@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenTracer
+namespace OpenTracerPackage
 {
     public interface IOpenTracer
     {
         void AddEvent(TraceEvent traceEvent);
+        Task WriteEvents();
     }
 }

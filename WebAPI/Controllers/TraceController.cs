@@ -1,5 +1,5 @@
-﻿using OpenTracer.Core.Abstraction;
-using OpenTracer.Core.Entities;
+﻿using OpenTracerPackage.Core.Abstraction;
+using OpenTracerPackage.Core.Entities;
 
 namespace WebAPI.Controllers
 {
