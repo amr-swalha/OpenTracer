@@ -29,14 +29,22 @@ namespace OpenTracerPackage
         }
         public async Task WriteEvents()
         {
-            Console.WriteLine("Events written");
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory())
                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
             IConfiguration config = builder.Build();
             if (Details.Count > 0)
             {
-                var response = await config["OpenTracer:API"].PostJsonAsync(new Traces { Details = JsonSerializer.Serialize(Details) });
+                Debug.WriteLine($"Submitting total of {Details.Count} to {config["OpenTracer:API"]}");
+                try
+                {
+                    var response = await config["OpenTracer:API"].PostJsonAsync(new Traces { Details = JsonSerializer.Serialize(Details) });
+                    Debug.WriteLine($"Events sent, status code: {response.StatusCode}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Events sending error: {ex.Message}");
+                }
 
             }
         }
