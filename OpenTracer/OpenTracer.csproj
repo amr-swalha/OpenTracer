@@ -1,17 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))Package</RootNamespace>
+    <Title>OpenTracer NuGet Package</Title>
+    <Authors>amr.swalha</Authors>
+    <Copyright>2023 - Under Apache 2.0 License</Copyright>
+    <PackageProjectUrl>https://github.com/amr-swalha/OpenTracer</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/amr-swalha/OpenTracer</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>OpenTracer, Logging, Tracing</PackageTags>
+    <PackageReleaseNotes>1.0 Initial release of the tracker</PackageReleaseNotes>
+    <Description>The main package for OpenTracer</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="3.2.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

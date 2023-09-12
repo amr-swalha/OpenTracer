@@ -5,7 +5,7 @@ namespace OpenTracerPackage.Tests
         [Fact]
         public async Task Test1()
         {
-            IOpenTracer openTracer = new OpenTracer();
+            IOpenTracer openTracer = new OpenTracer("");
             for (int i = 0; i < 10; i++)
             {
                 openTracer.AddEvent(new TraceEvent

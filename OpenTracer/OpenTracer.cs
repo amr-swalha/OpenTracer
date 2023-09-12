@@ -1,5 +1,4 @@
 ﻿using Flurl.Http;
-using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Text.Json;
 
@@ -8,6 +7,11 @@ namespace OpenTracerPackage
     public class OpenTracer : IOpenTracer
     {
         public static List<TraceEvent> Details { get; set; } = new();
+        public string Endpoint { get; set; }
+        public OpenTracer(string endpoint)
+        {
+            Endpoint = endpoint;
+        }
         public void AddEvent(TraceEvent traceEvent)
         {
             Process p = System.Diagnostics.Process.GetCurrentProcess();
@@ -29,17 +33,14 @@ namespace OpenTracerPackage
         }
         public async Task WriteEvents()
         {
-            var builder = new ConfigurationBuilder();
-            builder.SetBasePath(Directory.GetCurrentDirectory())
-                   .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-            IConfiguration config = builder.Build();
             if (Details.Count > 0)
             {
-                Debug.WriteLine($"Submitting total of {Details.Count} to {config["OpenTracer:API"]}");
+                Debug.WriteLine($"Submitting total of {Details.Count} to {Endpoint}");
                 try
                 {
-                    var response = await config["OpenTracer:API"].PostJsonAsync(new Traces { Details = JsonSerializer.Serialize(Details) });
+                    var response = await Endpoint.PostJsonAsync(new Traces { Details = JsonSerializer.Serialize(Details) });
                     Debug.WriteLine($"Events sent, status code: {response.StatusCode}");
+                    Details.Clear();
                 }
                 catch (Exception ex)
                 {
