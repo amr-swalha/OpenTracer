@@ -25,9 +25,14 @@ As you can see, you just need to point the library toward the API endpoint and t
 
 And you just need to call the WriteEvents method and it will write all the events for you.
 
+### Backend Installation
+
+Just publish the Web API to any IIS application or website. Make sure to point the connection string to the Postgres server. Also, there is a script attached under WebAPI/SQL so you can create the database and the needed table.
+
+
 ### ASP.NET Core + IHostedService
 
-To add an easy way of logging to your ASP.NET Core applicaiton, you can simply inject the package wtih a service and provide the endpoint as follow:
+To add an easy way of logging to your ASP.NET Core application, you can simply inject the package wtih a service and provide the endpoint as follow:
 
     builder.Services.AddScoped<IOpenTracer>(sp => new OpenTracer("https://localhost:7210/api/Trace"));
 
