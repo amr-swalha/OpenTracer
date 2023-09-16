@@ -29,6 +29,10 @@ And you just need to call the WriteEvents method and it will write all the event
 
 Just publish the Web API to any IIS application or website. Make sure to point the connection string to the Postgres server. Also, there is a script attached under WebAPI/SQL so you can create the database and the needed table.
 
+### Docker Images
+
+Coming soon to the project.
+
 
 ### ASP.NET Core + IHostedService
 
