@@ -18,6 +18,7 @@ namespace OpenTracerPackage.Infra
             _dataContext = dataContext;
             Guard.Against.Null(_dataContext);
             _appDbConnection = appDbConnection;
+            _dataContext.Database.EnsureCreated();
         }
 
         public void Delete(T entity)

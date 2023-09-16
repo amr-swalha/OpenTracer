@@ -1,0 +1,33 @@
+﻿CREATE DATABASE "OpenTracer"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+-- SCHEMA: main
+
+-- DROP SCHEMA IF EXISTS main ;
+
+CREATE SCHEMA IF NOT EXISTS main
+    AUTHORIZATION postgres;
+
+-- Table: main.traces
+
+-- DROP TABLE IF EXISTS main.traces;
+
+CREATE TABLE IF NOT EXISTS main.traces
+(
+    id uuid NOT NULL DEFAULT gen_random_uuid(),
+    creationdate timestamp with time zone DEFAULT now(),
+    details jsonb,
+    CONSTRAINT traces_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS main.traces
+    OWNER to postgres;
