@@ -21,7 +21,7 @@ namespace OpenTracerPackage.Infra
             builder.Entity<Traces>().Property(y => y.CreationDate).HasColumnName(nameof(Traces.CreationDate).ToLower());
             builder.Entity<Traces>().Property(y => y.Details).HasColumnName(nameof(Traces.Details).ToLower());
             builder.Entity<Traces>().Property(y => y.Details).HasColumnType("jsonb");
-            builder.Entity<Traces>().Property(y => y.Id).HasDefaultValueSql("newsequentialid()");
+            builder.Entity<Traces>().Property(y => y.Id).HasDefaultValueSql("gen_random_uuid()");
         }
     }
 }
