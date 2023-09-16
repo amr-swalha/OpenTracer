@@ -28,6 +28,7 @@ And you just need to call the WriteEvents method and it will write all the event
 ### Backend Installation
 
 Just publish the Web API to any IIS application or website. Make sure to point the connection string to the Postgres server. Also, there is a script attached under WebAPI/SQL so you can create the database and the needed table.
+Note that there is added migrations as well so you just need the Postgres SQL DB.
 
 ### Docker Images
 
